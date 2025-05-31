@@ -70,3 +70,17 @@ input[name="todoItem"] {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
+
+.list-items {
+
+  gap: 10px;
+  margin: 15px 5px;
+  font-size: 18px;
+  color: #2c2c2c;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #a682e3;
+}

@@ -30,7 +30,7 @@
                         
                     <form action="/edit" method="post">
 
-                        <p id="text<%= item.id %>"><%= item.title %></p>
+                        <p class="list-items" id="text<%= item.id %>"><%= item.title %></p>
 
                         <input hidden name="id" value="<%= item.id %>" />
                         <input type="text" name="title" id="input<%= item.id %>" value="<%= item.title %>" hidden />
@@ -55,9 +55,9 @@
 
             edit.hidden = true;
             editdone.hidden = false;
-
-            text.hidden = true;         // Hide the <p>
-            input.hidden = false;       // Show the <input>
+            text.hidden = true;
+            input.hidden = false;
+            
             input.focus();
   }
     </script>
