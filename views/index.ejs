@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+
+    <div class="container">
+            
+        <p class="today">Today</p>
+            
+        <form action="/add" method="post">
+
+            <input type="text" name="todoItem" placeholder="New Item" autofocus>
+            <button class="add">+</button>
+
+        </form>
+
+        
+            <% for(const item of todoItems) { %>
+                <div class="items">
+                    <form action="/delete" method="post">
+                        <input type="checkbox" name="itemId" value="<%= item.id %>" onchange="this.form.submit()" />
+                    </form>
+
+                        
+                    <form action="/edit" method="post">
+
+                        <p id="text<%= item.id %>"><%= item.title %></p>
+
+                        <input hidden name="id" value="<%= item.id %>" />
+                        <input type="text" name="title" id="input<%= item.id %>" value="<%= item.title %>" hidden />
+
+                        <button hidden class="editdone" id="editdone<%= item.id %>" type="submit"><img class="icon" src="/assets/icons/check-solid.svg" alt="check image"></button>
+
+                    </form>
+
+                    <button type="button" id="edit<%= item.id %>" class="edit" onclick="handler('<%=item.id%>')"><img class="icon" src="/assets/icons/pencil-solid.svg" alt="pencil image"></button>
+                </div>
+            <% } %>
+        
+              
+    </div>
+
+    <script>
+        function handler(id) {
+            const input = document.getElementById("input" + id);
+            const text = document.getElementById("text" + id);
+            const edit = document.getElementById("edit" + id);
+            const editdone = document.getElementById("editdone" + id);
+
+            edit.hidden = true;
+            editdone.hidden = false;
+
+            text.hidden = true;         // Hide the <p>
+            input.hidden = false;       // Show the <input>
+            input.focus();
+  }
+    </script>
+</body>
+</html>
